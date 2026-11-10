@@ -1,0 +1,39 @@
+{
+  "name": "portfolio-order-splitter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Model-portfolio order splitter: NestJS API + Next.js console in a pnpm/Turborepo monorepo",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=24.15.0",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.34.9",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "test:cov": "turbo run test:cov",
+    "verify": "turbo run lint typecheck test test:e2e build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "turbo": "^2.11.10",
+    "typescript": "~6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  }
+}

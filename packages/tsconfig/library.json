@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Isomorphic ESM library (consumed by Node and the browser)",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "types": [],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  }
+}
