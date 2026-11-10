@@ -8,7 +8,7 @@ const TIME_SEPARATOR = ':';
 const LIST_SEPARATOR = ',';
 const MINUTES_PER_HOUR = 60;
 
-export interface TimeOfDay {
+interface TimeOfDay {
   hour: number;
   minute: number;
 }

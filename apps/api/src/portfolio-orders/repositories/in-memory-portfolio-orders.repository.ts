@@ -9,7 +9,7 @@ import {
   type PortfolioOrderFilter,
 } from './portfolio-orders.repository.js';
 
-export interface HistoryCapacity {
+interface HistoryCapacity {
   readonly maxOrders: number;
   /** Total stock lines across all stored orders. */
   readonly maxStockOrders: number;

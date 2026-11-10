@@ -12,7 +12,7 @@ import { FixedClock } from '../fixtures/fixed-clock.js';
 /** Wednesday 11 Nov 2026, 12:00 New York time: the market is open. */
 export const MARKET_OPEN_INSTANT = new Date('2026-11-11T17:00:00.000Z');
 
-export interface TestAppOptions {
+interface TestAppOptions {
   now?: Date;
   trading?: Partial<TradingConfig>;
   http?: Partial<HttpConfig>;

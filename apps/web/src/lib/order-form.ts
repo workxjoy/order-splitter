@@ -25,7 +25,6 @@ export interface OrderFormValues {
 export type FieldErrors = Record<string, string[]>;
 
 export const FieldPath = {
-  ORDER_TYPE: 'orderType',
   TOTAL_AMOUNT: 'totalAmount',
   PORTFOLIO_NAME: 'portfolio.name',
   ALLOCATIONS: 'portfolio.allocations',

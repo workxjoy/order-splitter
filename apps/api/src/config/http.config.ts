@@ -11,7 +11,7 @@ const TRUST_PROXY_FORMAT =
   'Must be "false", a hop count, or a comma-separated list of IP addresses, CIDR ranges, ' +
   '"loopback", "linklocal" or "uniquelocal"';
 
-export type TrustProxy = false | number | string[];
+type TrustProxy = false | number | string[];
 
 // Which proxies may set X-Forwarded-For. This decides req.ip, and so the rate-limit key.
 const trustProxySchema = z

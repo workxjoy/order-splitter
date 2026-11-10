@@ -9,7 +9,7 @@ export const Money = Decimal.clone({ precision: MONEY_PRECISION, rounding: Decim
 export type Money = Decimal;
 
 export const CENTS_DECIMALS = 2;
-export const MIN_PRICE_DISPLAY_DECIMALS = 2;
+const MIN_PRICE_DISPLAY_DECIMALS = 2;
 
 export function sumOf(values: readonly Money[]): Money {
   return values.reduce((total, value) => total.plus(value), new Money(0));

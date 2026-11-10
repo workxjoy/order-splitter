@@ -17,7 +17,7 @@ import {
   type Page,
 } from './repositories/portfolio-orders.repository.js';
 
-export interface CreatePortfolioOrderResult {
+interface CreatePortfolioOrderResult {
   readonly order: PortfolioOrder;
   /** True when this is a retry of an earlier request with the same Request-Key. */
   readonly replayed: boolean;

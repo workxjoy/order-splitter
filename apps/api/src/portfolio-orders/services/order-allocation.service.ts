@@ -20,7 +20,7 @@ import {
   QUANTITY_DECIMAL_BASE,
 } from '../portfolio-orders.constants.js';
 
-export interface AllocationInput {
+interface AllocationInput {
   readonly symbol: string;
   readonly percent: Money;
   readonly marketPrice?: Money;
