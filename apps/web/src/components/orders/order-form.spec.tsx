@@ -39,6 +39,16 @@ function expectWeight(total: string, hint: string) {
 const rowCount = () => screen.getAllByRole('button', { name: /^Remove row/ }).length;
 const splitButton = () => screen.getByRole('button', { name: 'Split order' });
 
+/**
+ * Waits for an error with no field at fault to be shown and focused. The form moves focus to the
+ * message once it is unlocked, so editing before then could lose keystrokes to that focus move.
+ */
+async function errorShown() {
+  const alert = await screen.findByRole('alert');
+  await waitFor(() => expect(alert).toHaveFocus());
+  return alert;
+}
+
 // Sample order plus an empty third row, submitted so that row 3 shows its errors.
 async function submitWithEmptyThirdRow(user: ReturnType<typeof userEvent.setup>) {
   await user.click(screen.getByRole('button', { name: 'Add stock' }));
@@ -194,7 +204,7 @@ describe('OrderForm', () => {
     const submitAndWait = async (times: number) => {
       await user.click(splitButton());
       await waitFor(() => expect(submitOrder).toHaveBeenCalledTimes(times));
-      await screen.findByRole('alert');
+      await errorShown();
     };
 
     await submitAndWait(1);
@@ -214,7 +224,7 @@ describe('OrderForm', () => {
     const { user } = renderForm();
 
     await user.click(splitButton());
-    await screen.findByRole('alert');
+    await errorShown();
     // Edited, then written differently but meaning the same: 100.00 and aapl.
     await user.clear(screen.getByLabelText('Total amount (USD)'));
     await user.type(screen.getByLabelText('Total amount (USD)'), '100.00');
@@ -236,7 +246,7 @@ describe('OrderForm', () => {
 
     await user.click(splitButton());
 
-    expect(await screen.findByRole('alert')).toHaveTextContent(ErrorMessage.SUBMIT_UNCONFIRMED);
+    expect(await errorShown()).toHaveTextContent(ErrorMessage.SUBMIT_UNCONFIRMED);
     expect(screen.getByLabelText('Total amount (USD)')).toHaveValue('250');
 
     await user.click(splitButton());
@@ -268,7 +278,7 @@ describe('OrderForm', () => {
     const { user } = renderForm();
 
     await user.click(splitButton());
-    await screen.findByRole('alert');
+    await errorShown();
     await user.click(splitButton());
 
     expect(await screen.findByText(/Already placed/)).toBeInTheDocument();
@@ -285,7 +295,7 @@ describe('OrderForm', () => {
     const submitAndWait = async (times: number) => {
       await user.click(splitButton());
       await waitFor(() => expect(submitOrder).toHaveBeenCalledTimes(times));
-      await screen.findByRole('alert');
+      await errorShown();
     };
 
     await submitAndWait(1);
